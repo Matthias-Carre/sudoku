@@ -29,15 +29,17 @@ public class Grid {
             columns[i] = c;
 
         }
+        int c = 0;
         for (int i = 0; i < 9; i++) {
+            if(i==3||i==6){c+=18;}
             int[] square = new int[9];
             for (int j = 0; j < 9; j++) {
                 if(j<3){
-                    square[j] = liste[j+i*3];
+                    square[j] = liste[j+i*3+c];
                 } else if (j<6) {
-                    square[j] = liste[j+6+i*3];
+                    square[j] = liste[j+6+i*3+c];
                 }else {
-                    square[j] = liste[j+12+i*3];
+                    square[j] = liste[j+12+i*3+c];
                 }
             }
             Square s = new Square(square);

@@ -11,4 +11,12 @@ public class Square extends Elements{
             System.out.print(this.list[i]+" ");
         }
     }
+    public boolean hasNum(int num){
+        for (int i = 0; i < 9; i++){
+            if(list[i] == num){
+                return true;
+            }
+        }
+        return false;
+    }
 }
