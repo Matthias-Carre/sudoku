@@ -10,8 +10,30 @@ public class Main {
 
         g.printDisplay();
 
+        /*
+        Row[] rows = g.getRows();
+        System.out.println("les lignes:");
+        for(int i=0;i<rows.length;i++) {
+            rows[i].PrintRow();
+        }
+        Column[] columns = g.getColumns();
+        System.out.println("les colones:");
+        for(int i=0;i<columns.length;i++) {
+            columns[i].PrintColumn();
+        }
+    */
+        Square[] squares = g.getSquares();
+        System.out.println("les squares:");
+        for(int i=0;i<9;i++) {
+            squares[i].PrintSquare();
+            System.out.println();
+        }
+
+
+
+
+
 
 
     }
 }
-

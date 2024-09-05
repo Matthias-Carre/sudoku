@@ -2,9 +2,56 @@ import java.util.List;
 
 public class Grid {
     int[] grid;
+    Row[] rows;
+    Column[] columns;
+    Square[] squares;
 
     public Grid(int[] liste) {
         this.grid = liste;
+        this.rows = new Row[9];
+        this.columns = new Column[9];
+        this.squares = new Square[9];
+
+        for (int i = 0; i < 9; i++) {
+            int[] row = new int[9];
+            for (int j = 0; j < 9; j++) {
+                row[j] = liste[i * 9 + j];
+            }
+            Row r = new Row(row);
+            rows[i] = r;
+        }
+        for (int i = 0; i < 9; i++) {
+            int[] column = new int[9];
+            for (int j = 0; j < 9; j++) {
+                column[j] = liste[j * 9 + i];
+            }
+            Column c = new Column(column);
+            columns[i] = c;
+
+        }
+        for (int i = 0; i < 9; i++) {
+            int[] square = new int[9];
+            for (int j = 0; j < 9; j++) {
+                if(j<3){
+                    square[j] = liste[j+i*3];
+                } else if (j<6) {
+                    square[j] = liste[j+6+i*3];
+                }else {
+                    square[j] = liste[j+12+i*3];
+                }
+            }
+            Square s = new Square(square);
+            squares[i] = s;
+        }
+    }
+    public Row[] getRows(){
+        return this.rows;
+    }
+    public Column[] getColumns(){
+        return this.columns;
+    }
+    public Square[] getSquares(){
+        return this.squares;
     }
 
     public int[] getList() {
