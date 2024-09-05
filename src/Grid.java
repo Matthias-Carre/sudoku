@@ -19,7 +19,7 @@ public class Grid {
         for(int i=0;i<9;i++){
 
             if(i==3 || i==6){
-                System.out.println("┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫");
+                System.out.println("┣━━━┿━━━┿━━━╋━━━┿━━━┿━━━╋━━━┿━━━┿━━━┫");
             }
             System.out.print("┃");
 
@@ -38,6 +38,6 @@ public class Grid {
             }
             System.out.println("┃");
         }
-        System.out.println("┗━━━┷━━━┷━━━┷━━━┷━━━┷━━━┷━━━┷━━━┷━━━┛");
+        System.out.println("┗━━━┷━━━┷━━━┻━━━┷━━━┷━━━┻━━━┷━━━┷━━━┛");
     }
 }
