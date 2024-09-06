@@ -1,4 +1,6 @@
-import java.util.List;
+import elements.Column;
+import elements.Row;
+import elements.Square;
 
 public class Grid {
     int[] grid;

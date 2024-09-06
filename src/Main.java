@@ -1,3 +1,6 @@
+import elements.Cell;
+import elements.Square;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -11,17 +14,17 @@ public class Main {
         g.printDisplay();
 
         /*
-        Row[] rows = g.getRows();
+        elements.Row[] rows = g.getRows();
         System.out.println("les lignes:");
         for(int i=0;i<rows.length;i++) {
             rows[i].PrintRow();
         }
-        Column[] columns = g.getColumns();
+        elements.Column[] columns = g.getColumns();
         System.out.println("les colones:");
         for(int i=0;i<columns.length;i++) {
             columns[i].PrintColumn();
         }
-    */
+
         Square[] squares = g.getSquares();
         System.out.println("les squares:");
         for(int i=0;i<9;i++) {
@@ -30,7 +33,14 @@ public class Main {
         }
 
         System.out.println(squares[0].hasNum(6));
+        */
+        Cell c = new Cell(2,27);
+        Cell c2 = new Cell(2,21);
 
+
+        c.getSquare(g.getList()).PrintSquare();
+        System.out.println();
+        c2.getSquare(g.getList()).PrintSquare();
 
 
 
