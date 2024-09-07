@@ -2,44 +2,60 @@ package elements;
 
 public class Cell {
     int value;
-    int line;
-    int col;
+    int pos;
+    int posx;
+    int posy;
     int[] possibility = new int[9];
 
     public Cell(int val,int pos){
         this.value = val;
-        this.line =pos%9 ;
-        this.col = pos/9;
+        this.pos = pos;
+        this.posx = pos%9 ;
+        this.posy = pos/9;
+    }
+    public int getPos(){
+        return this.pos;
+    }
+    public int getValue(){
+        return this.value;
     }
 
-    public Column getCol(int[] list){
-        int[] colist = new int[9];
+    public int getPosx() {
+        return this.posx;
+    }
+
+    public int getPosy() {
+        return this.posy;
+    }
+
+    public Column getCol(Cell[] cells){
+        Cell[] colist = new Cell[9];
         for (int j = 0; j < 9; j++) {
-            colist[j] = list[j * 9 + this.line];
+            colist[j] = cells[j * 9 + this.posx];
         }
-        Column c = new Column(colist);
-        return c;
+        return new Column(colist);
     }
-    public Row getRow(int[] list){
-        int[] rowlist = new int[9];
+    public Row getRow(Cell[] cells){
+        Cell[] rowlist = new Cell[9];
         for(int j=0;j<9;j++){
-            rowlist[j]= list[9*this.col+j];
+            rowlist[j]= cells[9*this.posy +j];
         }
-        Row r = new Row(rowlist);
-        return r;
+        return new Row(rowlist);
     }
 
-    public Square getSquare(int[] list){
-        int[] square = new int[9];
-        int c=this.col/3;
-        int l=this.line/3;
+
+
+
+    public Square getSquare(Cell[] cells){
+        Cell[] square = new Cell[9];
+        int c=this.posy /3;
+        int l=this.posx/3;
         int n=0;
         for (int j = 0; j < 9; j++) {
             if(j==3 || j==6){n+=6;}
-            square[j] = list[(j+l*3+c*27)+n];
+            square[j] = cells[(j+l*3+c*27)+n];
         }
-        Square s = new Square(square);
-        return s;
+        return new Square(square);
     }
 
 }

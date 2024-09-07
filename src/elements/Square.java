@@ -1,8 +1,8 @@
 package elements;
 
 public class Square extends Elements{
-    public Square(int[] l) {
-        super(l);
+    public Square(Cell[] cells) {
+        super(cells);
     }
 
     public void PrintSquare(){
@@ -10,15 +10,8 @@ public class Square extends Elements{
             if(i%3==0){
                 System.out.println();
             }
-            System.out.print(this.list[i]+" ");
+            System.out.print(this.cells[i].getValue()+" ");
         }
     }
-    public boolean hasNum(int num){
-        for (int i = 0; i < 9; i++){
-            if(list[i] == num){
-                return true;
-            }
-        }
-        return false;
-    }
+
 }

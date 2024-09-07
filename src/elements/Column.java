@@ -4,13 +4,13 @@ public class Column extends Elements{
 
 
 
-    public Column(int[] l) {
-        super(l);
+    public Column(Cell[] cells) {
+        super(cells);
     }
 
     public void PrintColumn(){
         for(int i=0;i<9;i++){
-            System.out.println(this.list[i]);
+            System.out.println(this.cells[i].getValue());
         }
     }
 }
