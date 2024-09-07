@@ -4,6 +4,7 @@ import elements.Cell;
 import elements.Grid;
 
 public class DR3 extends DeductionRule {
+    // si la valeur est la seul possible dans cette case alors on la fout
     @Override
     public void applyRule(Cell c, Grid grid) {
 

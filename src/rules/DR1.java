@@ -11,14 +11,15 @@ public class DR1 extends DeductionRule{
 
         //si la taille de missingvalue est plus grande que un cest pas normal
         Row row = cell.getRow(g.getCells());
-        tryToAdd(row);
+        this.tryToAdd(row);
         Column col = cell.getCol(g.getCells());
-        tryToAdd(col);
+        this.tryToAdd(col);
         Square squ = cell.getSquare(g.getCells());
-        tryToAdd(squ);
+        this.tryToAdd(squ);
     }
     public void tryToAdd(Elements e){
         if(e.emptyCells().toArray().length == 1 ){
+            System.out.println("trouver info");
             e.emptyCells().get(0).setAddbyrule(true);
             e.emptyCells().get(0).setValue(e.missingValues().get(0));
         }
