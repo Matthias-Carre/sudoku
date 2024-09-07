@@ -12,7 +12,8 @@ public class DR1 extends DeductionRule{
         System.out.println("val de empty: "+row.emptyCells().toArray().length);
         if(row.emptyCells().toArray().length == 1 ){
             System.out.println("val def en X="+ row.emptyCells().get(0).getPosx()+" Y="+row.emptyCells().get(0).getPosy()+" et valeur = "+ row.missingValues().get(0) );
-
+            row.emptyCells().get(0).setAddbyrule(true);
+            row.emptyCells().get(0).setValue(row.missingValues().get(0));
 
         }
     }

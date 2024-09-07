@@ -22,6 +22,8 @@ public class Main {
 
         d1.applyRule(cell,g);
 
+        g.printDisplay();
+
 
 
     }

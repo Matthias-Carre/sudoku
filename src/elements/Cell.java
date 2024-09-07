@@ -5,6 +5,7 @@ public class Cell {
     int pos;
     int posx;
     int posy;
+    boolean addbyrule;
     int[] possibility = new int[9];
 
     public Cell(int val,int pos){
@@ -26,6 +27,18 @@ public class Cell {
 
     public int getPosy() {
         return this.posy;
+    }
+
+    public boolean isAddbyrule() {
+        return this.addbyrule;
+    }
+
+    public void setAddbyrule(boolean addbyrule) {
+        this.addbyrule = addbyrule;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
     }
 
     public Column getCol(Cell[] cells){

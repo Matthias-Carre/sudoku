@@ -50,7 +50,13 @@ public class Grid {
                 if (list[i * 9 + j].getValue() == -1) {
                     System.out.print("   ");
                 } else {
-                    System.out.print(" "+list[i * 9 + j].getValue()+" ");
+                    //juste pour voir la progression les chiffre ajouter auron un ! derriere
+                    if(list[i * 9 + j].isAddbyrule()){
+                        System.out.print(" "+list[i * 9 + j].getValue()+"!");
+                    }else{
+                        System.out.print(" "+list[i * 9 + j].getValue()+" ");
+                    }
+
                 }
             }
             System.out.println("┃");
