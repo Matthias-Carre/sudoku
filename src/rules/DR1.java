@@ -4,17 +4,23 @@ import elements.Cell;
 import elements.*;
 
 public class DR1 extends DeductionRule{
-    //idee de base mettre la valeur si elle nest pas dans la ligne ni col ni carre
+    //idee de base mettre la valeur si il reste une seul case vide dans ligne col carre
 
     @Override
     public void applyRule(Cell cell, Grid g) {
-        Row row = cell.getRow(g.getCells());
-        System.out.println("val de empty: "+row.emptyCells().toArray().length);
-        if(row.emptyCells().toArray().length == 1 ){
-            System.out.println("val def en X="+ row.emptyCells().get(0).getPosx()+" Y="+row.emptyCells().get(0).getPosy()+" et valeur = "+ row.missingValues().get(0) );
-            row.emptyCells().get(0).setAddbyrule(true);
-            row.emptyCells().get(0).setValue(row.missingValues().get(0));
 
+        //si la taille de missingvalue est plus grande que un cest pas normal
+        Row row = cell.getRow(g.getCells());
+        tryToAdd(row);
+        Column col = cell.getCol(g.getCells());
+        tryToAdd(col);
+        Square squ = cell.getSquare(g.getCells());
+        tryToAdd(squ);
+    }
+    public void tryToAdd(Elements e){
+        if(e.emptyCells().toArray().length == 1 ){
+            e.emptyCells().get(0).setAddbyrule(true);
+            e.emptyCells().get(0).setValue(e.missingValues().get(0));
         }
     }
 
