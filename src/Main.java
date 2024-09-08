@@ -10,7 +10,6 @@ public class Main {
     public static void main(String[] args) {
         List<Integer> valuesList = parser.parse("src\\sudoku.txt");
 
-        // Convert List<Integer> to int[]
         int[] values = valuesList.stream().mapToInt(Integer::intValue).toArray();
 
         Grid grid = new Grid(values);
@@ -19,7 +18,7 @@ public class Main {
             grid.printDisplay();
 
             DR2 d2 = new DR2();
-            provisoire(values, d2); // Passer les valeurs directement
+            provisoire(values, d2);
         }
     }
 
