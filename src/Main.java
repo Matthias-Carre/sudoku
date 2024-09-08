@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> valuesList = parser.parse("src\\sudoku.txt");
+        List<Integer> valuesList = parser.parse("grilles\\grille3.txt");
 
         // Convert List<Integer> to int[]
         int[] values = valuesList.stream().mapToInt(Integer::intValue).toArray();
@@ -29,9 +29,7 @@ public class Main {
             g.getCells()[i].setValue(liste[i]);
             rule.applyRule(g.getCells()[i], g);
         }
-        System.out.println(g.getCells()[80].getPossibilitys());
-        g.getCells()[80].getSquare(g.getCells()).PrintSquare();
-        System.out.println();
+
         g.printDisplay();
     }
 }

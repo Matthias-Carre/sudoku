@@ -8,7 +8,6 @@ public class DR2 extends DeductionRule{
 
     @Override
     public void applyRule(Cell cell, Grid g) {
-        System.out.println("cell X: "+cell.getPosx()+" cell Y: "+cell.getPosy()+" cell pos: "+cell.getValue());
         if(cell.getValue()!=-1){
 
             Row row = cell.getRow(g.getCells());
