@@ -13,5 +13,11 @@ public class Row extends Elements{
         }
         System.out.println("");
     }
+    public void print(){
+        for(int i=0;i<9;i++){
+            System.out.print(this.cells[i].getValue()+" ");
+        }
+        System.out.println("");
+    }
 
 }
