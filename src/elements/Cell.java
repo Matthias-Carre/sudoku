@@ -1,12 +1,17 @@
 package elements;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Cell {
     int value;
     int pos;
     int posx;
     int posy;
     boolean addbyrule;
-    int[] possibility = new int[9];
+
+    List<Integer> possibility = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9));
 
     public Cell(int val,int pos){
         this.value = val;
@@ -56,9 +61,6 @@ public class Cell {
         return new Row(rowlist);
     }
 
-
-
-
     public Square getSquare(Cell[] cells){
         Cell[] square = new Cell[9];
         int c=this.posy /3;
@@ -69,6 +71,13 @@ public class Cell {
             square[j] = cells[(j+l*3+c*27)+n];
         }
         return new Square(square);
+    }
+
+    public void removeValue(int val){
+        this.possibility.removeAll(new ArrayList<>(Arrays.asList(val)));
+    }
+    public List<Integer> getPossibilitys(){
+        return this.possibility;
     }
 
 }

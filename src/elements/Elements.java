@@ -35,4 +35,9 @@ public class Elements {
         return l;
     }
 
+    public Cell[] getCells(){
+        return this.cells;
+    }
+
+
 }
