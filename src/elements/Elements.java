@@ -39,5 +39,7 @@ public class Elements {
         return this.cells;
     }
 
+    public void print(){}
+
 
 }

@@ -1,38 +1,57 @@
-import Parser.parser;
+import elements.Cell;
+import elements.Elements;
 import elements.Grid;
+import rules.DR1;
 import rules.DR2;
 import rules.DeductionRule;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        try {
-            List<Integer> valuesList = parser.parse("C:\\Users\\potichachalcoolik\\IdeaProjects\\sudoku\\src\\sudoku.txt");
 
-            int[] values = valuesList.stream().mapToInt(Integer::intValue).toArray();
 
-            Grid grid = new Grid(values);
+        int[] liste = {3,4,2,-1,8,-1,-1,-1,-1,5,-1,-1,9,-1,-1,-1,2,-1,-1,9,-1,-1,-1,4,3,8,-1,-1,2,-1,3,-1,5,1,-1,-1,-1,5,-1,7,-1,6,-1,4,-1,-1,7,-1,-1,9,1,6,5,2,6,-1,-1,-1,7,9,2,3,1,7,-1,-1,-1,6,-1,8,-1,-1,2,-1,-1,5,3,-1,4,-1,-1};
+        int[] liste2 = {-1,2,-1,-1,-1,9,5,-1,-1,9,-1,-1,7,-1,-1,3,2,-1,6,-1,-1,4,5,-1,1,-1,-1,8,-1,1,5,-1,-1,-1,6,2,3,4,-1,6,-1,-1,-1,1,-1,2,5,6,1,-1,-1,4,3,-1,1,-1,-1,-1,-1,4,-1,-1,8,-1,-1,4,8,3,5,2,-1,-1,5,-1,8,-1,-1,-1,7,4,-1};
+        int[] liste3 = {6,9,-1,-1,-1,-1,-1,8,7,-1,-1,-1,-1,-1,4,-1,9,-1,5,-1,3,-1,7,-1,-1,-1,1,2,8,5,9,6,-1,1,7,-1,9,1,-1,7,4,5,3,2,-1,-1,-1,-1,-1,-1,8,6,5,-1,8,-1,9,4,-1,1,-1,-1,-1,-1,3,-1,-1,-1,-1,-1,-1,5,-1,-1,-1,3,9,-1,-1,1,-1};
+        int[] liste4 = {1,-1,-1,3,8,2,4,9,-1,3,-1,-1,-1,-1,-1,-1,1,-1,2,8,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,7,-1,-1,9,6,-1,-1,6,3,2,-1,-1,1,-1,-1,-1,-1,-1,-1,5,-1,3,-1,-1,-1,7,2,-1,-1,4,-1,-1,-1,8,3,-1,-1,-1,-1,-1,-1,-1,5,-1,9,1,6,-1,8,2,-1};
+        int[] liste5 = {-1,7,-1,-1,-1,-1,8,1,-1,-1,-1,-1,3,1,8,9,-1,2,2,8,1,4,7,-1,-1,-1,5,4,-1,-1,-1,6,-1,-1,-1,-1,6,9,-1,1,-1,3,-1,2,7,-1,-1,-1,-1,9,-1,-1,-1,6,9,-1,-1,-1,5,4,6,8,1,1,-1,6,9,8,2,-1,-1,-1,-1,5,7,-1,-1,-1,-1,4,-1 };
 
-            grid.printDisplay();
 
-            DR2 d2 = new DR2();
-            provisoire(values, d2);
+        int[] listefacil = {4,-1,-1,3,-1,7,6,-1,-1,-1,-1,3,-1,-1,2,8,-1,-1,9,2,8,5,1,-1,7,3,4,1,-1,-1,8,2,3,9,-1,-1,-1,-1,-1,7,5,-1,1,2,8,-1,-1,4,-1,-1,9,-1,-1,-1,6,-1,2,-1,4,8,3,5,1,-1,3,-1,-1,7,-1,4,-1,-1,-1,-1,9,-1,-1,-1,2,8,-1};
+        int[] listtest = {1,2,3,4,-1,6,7,8,9,
+                        9,5,4,-1,-1,-1,-1,-1,-1,
+                        8,6,-1,-1,-1,-1,-1,-1,-1,
+                        7,-1,-1,-1,-1,-1,-1,-1,-1,
+                        6,-1,-1,-1,-1,-1,-1,-1,-1,
+                        5,-1,-1,-1,-1,-1,-1,-1,-1,
+                        -1,-1,-1,-1,-1,-1,-1,-1,-1,
+                        3,-1,-1,-1,-1,-1,-1,-1,-1,
+                        2,-1,-1,-1,-1,-1,-1,-1,-1};
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        Grid gb = new Grid(liste);
+
+        gb.printDisplay();
+
+        DR2 d2 = new DR2();
+        provisoire(liste,d2);
+
+
+
+
+
     }
-
-    public static void provisoire(int[] liste, DeductionRule rule) {
-        Grid g = new Grid(liste);
+    public static void provisoire(int[] liste, DeductionRule rule){
+        Grid g = new Grid();
         for (int i = 0; i < liste.length; i++) {
             g.getCells()[i].setValue(liste[i]);
-            if (liste[i] > 0) {
-                rule.applyRule(g.getCells()[i], g);
-            } else {
-                rule.applyRule(g.getCells()[i], g);
+            if(liste[i]>0){
+                rule.applyRule(g.getCells()[i],g);
+            }else{
+                rule.applyRule(g.getCells()[i],g);
             }
         }
         System.out.println(g.getCells()[80].getPossibilitys());
