@@ -8,32 +8,24 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        try {
-            List<Integer> valuesList = parser.parse("C:\\Users\\potichachalcoolik\\IdeaProjects\\sudoku\\src\\sudoku.txt");
+        List<Integer> valuesList = parser.parse("src\\sudoku.txt");
 
-            int[] values = valuesList.stream().mapToInt(Integer::intValue).toArray();
+        int[] values = valuesList.stream().mapToInt(Integer::intValue).toArray();
 
-            Grid grid = new Grid(values);
+        Grid grid = new Grid(values);
 
-            grid.printDisplay();
+        grid.printDisplay();
 
-            DR2 d2 = new DR2();
-            provisoire(values, d2);
+        DR2 d2 = new DR2();
+        provisoire(values, d2);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public static void provisoire(int[] liste, DeductionRule rule) {
         Grid g = new Grid(liste);
         for (int i = 0; i < liste.length; i++) {
             g.getCells()[i].setValue(liste[i]);
-            if (liste[i] > 0) {
-                rule.applyRule(g.getCells()[i], g);
-            } else {
-                rule.applyRule(g.getCells()[i], g);
-            }
+            rule.applyRule(g.getCells()[i], g);
         }
         System.out.println(g.getCells()[80].getPossibilitys());
         g.getCells()[80].getSquare(g.getCells()).PrintSquare();
