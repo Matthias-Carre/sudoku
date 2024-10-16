@@ -8,15 +8,15 @@ public class DR2 extends DeductionRule{
 
     @Override
     public void applyRule(Cell cell, Grid g) {
-        if(cell.getValue()!=-1){
+        if(true){//cell.getValue()!=-1){
 
-            Row row = cell.getRow(g.getCells());
-            update(row,cell.getValue(),g);
-
-            Column col =cell.getCol(g.getCells());
-            update(col,cell.getValue(),g);
 
             Square square = cell.getSquare(g.getCells());
+            Row row = cell.getRow(g.getCells());
+            Column col =cell.getCol(g.getCells());
+
+            update(row,cell.getValue(),g);
+            update(col,cell.getValue(),g);
             update(square,cell.getValue(),g);
 
         }
@@ -24,20 +24,16 @@ public class DR2 extends DeductionRule{
 
     }
     public void update(Elements e,int val,Grid g){
-
         for(int i=0;i<9; i++){
             Cell cellinline = e.getCells()[i];
 
             if(cellinline.getPossibilitys().size()==1 && cellinline.getValue()==-1){
                 cellinline.setAddbyrule(true);
                 cellinline.setValue(cellinline.getPossibilitys().get(0));
-                cellinline.removeValue(val);
                 applyRule(cellinline,g);
-
 
             }
             cellinline.removeValue(val);
-
         }
     }
 

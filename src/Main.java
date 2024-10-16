@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> valuesList = parser.parse("grilles\\grille3.txt");
+        List<Integer> valuesList = parser.parse("grilles\\grille2.txt");
 
         int[] values = valuesList.stream().mapToInt(Integer::intValue).toArray();
 
@@ -25,7 +25,10 @@ public class Main {
     public static void provisoire(int[] liste, DeductionRule rule) {
         Grid g = new Grid(liste);
         for (int i = 0; i < liste.length; i++) {
-            g.getCells()[i].setValue(liste[i]);
+            if(liste[i]>0){
+                g.getCells()[i].setValue(liste[i]);
+            }
+
             rule.applyRule(g.getCells()[i], g);
         }
 

@@ -20,6 +20,7 @@ public class Square extends Elements{
             }
             System.out.print(this.cells[i].getValue()+" ");
         }
+        System.out.println();
     }
 
 }
