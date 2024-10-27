@@ -3,7 +3,7 @@ package rules;
 import elements.*;
 
 public class DR2 extends DeductionRule{
-    //mettre la val si elle nest ni presente dans ligne col ou carre ???? pas sur que ce soit bon
+    //mettre la val si elle nest ni presente dans ligne col ou carre
 
 
     @Override

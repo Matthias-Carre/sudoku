@@ -33,10 +33,10 @@ public class parser {
                 throw new IllegalArgumentException("Le fichier doit contenir exactement 9 lignes.");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return null;
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return null;
         }
 
