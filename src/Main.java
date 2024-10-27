@@ -89,6 +89,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         if (!(val==-1)){
             System.out.println("donner une valeur pour la ligne: "+val/9 +1+" et colone: "+(val%9 +1));
+            //verifier la valeur demander
             int i = Integer.parseInt(sc.nextLine());
             liste[val]=i;
 
