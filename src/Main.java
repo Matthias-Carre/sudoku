@@ -1,4 +1,5 @@
 import Parser.parser;
+import elements.Cell;
 import elements.Grid;
 import rules.DR1;
 import rules.DR2;
@@ -20,8 +21,18 @@ public class Main {
 
         run(list,dr);
 
+
     }
 
+    public static int testWin(Grid g){//renvoie soit la valeur de la 1er valeur a -1 ou alors -1 si tout est full
+        for(int i=0;i<81;i++){
+            Cell cell = g.getCells()[i];
+            if(cell.getValue()==-1){
+                return i;
+            }
+        }
+        return -1;
+    }
     public static DeductionRule selectionDR(){
         Scanner sc = new Scanner(System.in);
         String s = "";
@@ -74,5 +85,16 @@ public class Main {
         }
 
         g.printDisplay();
+        int val = testWin(g);
+        Scanner sc = new Scanner(System.in);
+        if (!(val==-1)){
+            System.out.println("donner une valeur pour la ligne: "+val/9 +1+" et colone: "+(val%9 +1));
+            int i = Integer.parseInt(sc.nextLine());
+            liste[val]=i;
+
+            run(liste,rule);
+        }
+
     }
+
 }
