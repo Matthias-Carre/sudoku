@@ -3,6 +3,12 @@ package rules;
 import elements.*;
 
 public class DR2 extends DeductionRule{
+
+    private Subject subject;
+
+    public DR2(Subject subject) {
+        this.subject = subject;
+    }
     //mettre la val si elle nest ni presente dans ligne col ou carre
 
 
@@ -23,15 +29,15 @@ public class DR2 extends DeductionRule{
 
 
     }
-    public void update(Elements e,int val,Grid g){
-        for(int i=0;i<9; i++){
+    public void update(Elements e, int val, Grid g) {
+        for (int i = 0; i < 9; i++) {
             Cell cellinline = e.getCells()[i];
 
-            if(cellinline.getPossibilitys().size()==1 && cellinline.getValue()==-1){
+            if (cellinline.getPossibilitys().size() == 1 && cellinline.getValue() == -1) {
                 cellinline.setAddbyrule(true);
                 cellinline.setValue(cellinline.getPossibilitys().get(0));
-                applyRule(cellinline,g);
-
+                subject.notifyObservers(cellinline);
+                applyRule(cellinline, g);
             }
             cellinline.removeValue(val);
         }
