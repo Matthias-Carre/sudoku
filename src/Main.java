@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
-    //Singleton
+    // Singleton
     private static Main instance;
 
     private Main() {}
@@ -38,7 +38,7 @@ public class Main {
         run(list, dr);
     }
 
-    public static int testWin(Grid g) { // renvoie soit la valeur de la 1er valeur à -1 ou alors -1 si tout est full
+    public static int testWin(Grid g) { // renvoie soit la valeur de la 1re valeur à -1 ou alors -1 si tout est full
         for (int i = 0; i < 81; i++) {
             Cell cell = g.getCells()[i];
             if (cell.getValue() == -1) {
@@ -50,12 +50,20 @@ public class Main {
 
     public DeductionRule selectionDR(Subject subject) {
         Scanner sc = new Scanner(System.in);
-        String s = "";
-        while (!(Objects.equals(s, "1") || Objects.equals(s, "2") || Objects.equals(s, "3"))) {
-            System.out.print("Quel regle appliquer? (entre 1 et 3) : ");
-            s = sc.nextLine();
+        int val = -1;
+        while (val < 1 || val > 3) {
+            System.out.print("Quelle règle appliquer? (entre 1 et 3) : ");
+
+            // Vérifie que l'entrée est un entier
+            while (!sc.hasNextInt()) {
+                System.out.println("Entrée invalide. Veuillez entrer un entier entre 1 et 3.");
+                sc.next(); // Ignore l'entrée pas valide
+            }
+
+            val = sc.nextInt();
         }
-        int val = Integer.parseInt(s);
+
+        // Crée l'objet DeductionRule en fonction de la valeur saisie
         DeductionRule dr;
         if (val == 1) {
             dr = new DR1();
@@ -64,8 +72,10 @@ public class Main {
         } else {
             dr = new DR3(subject);
         }
+
         return dr;
     }
+
 
     public Grid setectionGrid() {
         Scanner sc = new Scanner(System.in);
@@ -80,7 +90,7 @@ public class Main {
 
             try {
                 List<Integer> valuesList = parser.parse(path);
-                // Utilisation du design pattern gridAdapter
+                // Utilisation du design pattern GridAdapter
                 assert valuesList != null;
                 grid = GridAdapter.convert(valuesList);
             } catch (Exception e) {
@@ -91,7 +101,6 @@ public class Main {
         return grid;
     }
 
-
     public static void run(int[] liste, DeductionRule rule) {
         Grid g = new Grid(liste);
         Caretaker caretaker = new Caretaker(); // Création du caretaker pour gérer les mementos
@@ -100,7 +109,6 @@ public class Main {
             if (liste[i] > 0) {
                 g.getCells()[i].setValue(liste[i]);
             }
-
             // On save l'état de la grille avant l'application de la règle
             caretaker.saveState(new Memento(g.getCells()));
             rule.applyRule(g.getCells()[i], g);
@@ -111,19 +119,37 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         if (val != -1) {
-            System.out.println("Donner une valeur pour la ligne: " + (val / 9 + 1) + " et colone: " + (val % 9 + 1));
-            int i = Integer.parseInt(sc.nextLine());
+            System.out.println("Donner une valeur pour la ligne: " + (val / 9 + 1) + " et colonne: " + (val % 9 + 1));
 
-            //On restaure l'état si l'utilisateur souhaite annuler la dernière action
+            int i = -1;
+            while (i < 1 || i > 9) { // Validation de l'entrée
+                System.out.print("Entrez un entier entre 1 et 9 : ");
+                while (!sc.hasNextInt()) { // Vérifier que l'entrée est un entier
+                    System.out.println("Entrée invalide. Veuillez entrer un entier.");
+                    sc.next(); // Ignorer l'entrée non valide
+                }
+                i = sc.nextInt();
+            }
+
+            g.getCells()[val].setValue(i);
+
+            // On save l'état après avoir mis à jour la cellule avec la nouvelle valeur
+            caretaker.saveState(new Memento(g.getCells()));
+
+            // Appliquer la règle de déduction après la mise à jour
+            rule.applyRule(g.getCells()[val], g);
+            g.printDisplay();
+
+            // On propose l'annulation après affichage de l'état mis à jour
             System.out.print("Voulez-vous annuler la dernière action ? (o/n) : ");
-            String undoChoice = sc.nextLine();
+            String undoChoice = sc.next();
             if (undoChoice.equalsIgnoreCase("o")) {
                 Memento previousState = caretaker.restoreState();
                 if (previousState != null) {
                     g.setCells(previousState.getState());
+                    System.out.println("Action annulée.");
+                    g.printDisplay();
                 }
-            } else {
-                liste[val] = i;
             }
 
             run(liste, rule);

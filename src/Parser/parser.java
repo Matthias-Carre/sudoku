@@ -19,7 +19,7 @@ public class parser {
                 String[] lineValues = line.split(",");
 
                 if (lineValues.length != 9) {
-                    throw new IllegalArgumentException("Chaque ligne doit contenir 9 valeurs.");
+                    throw new IllegalArgumentException("Erreur de format : chaque ligne doit contenir exactement 9 valeurs.");
                 }
 
                 for (int col = 0; col < 9; col++) {
@@ -30,13 +30,13 @@ public class parser {
             }
 
             if (row != 9) {
-                throw new IllegalArgumentException("Le fichier doit contenir exactement 9 lignes.");
+                throw new IllegalArgumentException("Erreur de format : le fichier doit contenir exactement 9 lignes.");
             }
         } catch (IOException e) {
-            //e.printStackTrace();
+            System.out.println("Erreur : le fichier spécifié est introuvable. Veuillez vérifier le chemin.");
             return null;
         } catch (IllegalArgumentException e) {
-            //e.printStackTrace();
+            System.out.println(e.getMessage());
             return null;
         }
 
@@ -45,6 +45,8 @@ public class parser {
 
     public static void main(String[] args) {
         List<Integer> values = parse("src\\sudoku.txt");
-        System.out.println(values);
+        if (values != null) {
+            System.out.println(values);
+        }
     }
 }
