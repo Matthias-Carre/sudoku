@@ -146,10 +146,13 @@ public class Main {
             if (undoChoice.equalsIgnoreCase("o")) {
                 Memento previousState = caretaker.restoreState();
                 if (previousState != null) {
+
                     g.setCells(previousState.getState());
                     System.out.println("Action annulée.");
                     g.printDisplay();
                 }
+            }else{
+                liste[val]=i;
             }
 
             run(liste, rule);
