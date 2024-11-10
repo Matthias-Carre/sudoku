@@ -1,12 +1,27 @@
-Projet Sudoku 2024-2025 software engineering
+Projet Sudoku 2024-2025 softwares engineering
 
-Fonctinement:
-    1. recuperer le fichier projetsudoku.jar dans ./out/artifacts/projetsudoku_jar/
-    2. exectuer le fichier avec: java -jar projetsudoku.jar
-    3. renter la regles que vous voulez appliquer (entre 1 et 3)
-    4. renter le chemin vers la grille a resoudre
+Fonctionnement :
+    1.Récupérer le fichier projetsudoku.jar dans ./out/artifacts/projetsudoku_jar/
+    2.Exectuer le fichier avec : java -jar projetsudoku.jar
+    3.Renter la règle que vous voulez appliquer (entre 1 et 3)
+    4.Renter le chemin vers la grille à résoudre
+    5.Si la grille n'est pas résolue du premier coup, le programme demandera.
+    Une case a rempli correctement pour continuer.
 
-Format du fichier grille:
-    le fichier doit etre un fichier texte avec, sur chqaue lignes les 9 valeurs
-    de chaque lignes pour les 9 collones, 0 represente vide
+Le format du fichier grille :
+Le fichier doit être un fichier texte avec, sur chaque ligne les 9 valeurs
+de chaque ligne pour les 9 colonnes, 0 représente le vide.
 
+Exemple d'utilisation :
+
+    java -jar projetsudoku.jar
+
+    Quelle règle appliquer ? (entre 1 et 3) :
+    1
+
+    Quelle règle appliquer ? (entre 1 et 3) :
+    grilles/grille1.txt
+
+
+Auteurs :
+    Sacha Chantoiseau & Matthias Carré
