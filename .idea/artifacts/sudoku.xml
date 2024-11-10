@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="sudoku">
-    <output-path>$PROJECT_DIR$/out/artifacts/sudoku</output-path>
-    <root id="archive" name="sudoku.jar" />
-  </artifact>
-</component>
